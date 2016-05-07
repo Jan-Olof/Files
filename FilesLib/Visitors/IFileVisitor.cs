@@ -1,12 +1,11 @@
-﻿using FilesLib.FileModels;
-using FilesLib.Models;
+﻿using FilesLib.Models;
 
 namespace FilesLib.Visitors
 {
     public interface IFileVisitor
     {
-        void Visit(ImageFile imageFile);
+        string Visit(TextFile textFile);
 
-        void Visit(MovieFile movieFile);
+        string Visit(MovieFile movieFile);
     }
 }

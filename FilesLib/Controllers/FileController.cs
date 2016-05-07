@@ -6,16 +6,20 @@ namespace FilesLib.Controllers
 {
     public class FileController : IFileController
     {
-        public void ShowFiles()
+        public IList<string> ShowFileMetaData()
         {
-            var showFile = new ShowFile();
+            IList<string> metaData = new List<string>();
+
+            var showFileMetaData = new ShowFileMetaData();
 
             var files = new List<FileBase>();
 
             foreach (var file in files)
             {
-                file.Accept(showFile);
+                metaData.Add(file.Accept(showFileMetaData));
             }
+
+            return metaData;
         }
     }
 }

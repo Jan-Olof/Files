@@ -1,4 +1,4 @@
-﻿namespace FilesLib.FileModels
+﻿namespace FilesLib.Models
 {
     public interface IFile
     {

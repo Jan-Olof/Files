@@ -1,7 +1,9 @@
-﻿namespace FilesLib.Controllers
+﻿using System.Collections.Generic;
+
+namespace FilesLib.Controllers
 {
     public interface IFileController
     {
-        void ShowFiles();
+        IList<string> ShowFileMetaData();
     }
 }

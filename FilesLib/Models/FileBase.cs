@@ -1,5 +1,4 @@
-﻿using FilesLib.FileModels;
-using FilesLib.Visitors;
+﻿using FilesLib.Visitors;
 
 namespace FilesLib.Models
 {
@@ -7,8 +6,9 @@ namespace FilesLib.Models
     {
         public string Name { get; set; }
 
-        public virtual void Accept(IFileVisitor fileVisitor)
+        public virtual string Accept(IFileVisitor fileVisitor)
         {
+            return null;
         }
     }
 }

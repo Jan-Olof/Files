@@ -2,9 +2,9 @@
 
 namespace FilesLib.Models
 {
-    public class MovieFile : FileBase
+    public class TextFile : FileBase
     {
-        public decimal Length { get; set; }
+        public int Pages { get; set; }
 
         public override string Accept(IFileVisitor fileVisitor)
         {
