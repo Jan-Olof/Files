@@ -1,25 +1,28 @@
 ﻿using FilesLib.Models;
 using FilesLib.Visitors;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FilesLib.Controllers
 {
     public class FileController : IFileController
     {
-        public IList<string> ShowFileMetaData()
+        private readonly IFileVisitor _showFileMetaData;
+
+        public FileController(IFileVisitor showFileMetaData)
         {
-            IList<string> metaData = new List<string>();
-
-            var showFileMetaData = new ShowFileMetaData();
-
-            var files = new List<FileBase>();
-
-            foreach (var file in files)
+            if (showFileMetaData == null)
             {
-                metaData.Add(file.Accept(showFileMetaData));
+                throw new ArgumentNullException(nameof(showFileMetaData));
             }
 
-            return metaData;
+            _showFileMetaData = showFileMetaData;
+        }
+
+        public IList<string> ShowFileMetaData(IEnumerable<FileBase> files)
+        {
+            return files.Select(file => file.Accept(_showFileMetaData)).ToList();
         }
     }
 }

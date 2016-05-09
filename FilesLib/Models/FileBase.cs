@@ -1,4 +1,5 @@
 ﻿using FilesLib.Visitors;
+using System;
 
 namespace FilesLib.Models
 {
@@ -8,7 +9,7 @@ namespace FilesLib.Models
 
         public virtual string Accept(IFileVisitor fileVisitor)
         {
-            return null;
+            throw new NotImplementedException("Accept not implemented in FileBase.");
         }
     }
 }

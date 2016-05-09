@@ -1,9 +1,8 @@
 ﻿using FilesLib.Visitors;
+using FilesLibTests.TestObject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static FilesLibTests.TestObject.SampleMovieFiles;
-using static FilesLibTests.TestObject.SampleTextFiles;
 
-namespace FilesLibTests.Visitors
+namespace FilesLibTests.Unit_tests.Visitors
 {
     [TestClass]
     public class ShowFileMetaDataTests
@@ -15,7 +14,7 @@ namespace FilesLibTests.Visitors
             var sut = new ShowFileMetaData();
 
             // Act
-            string result = sut.Visit(CreateMovieFile());
+            string result = sut.Visit(SampleMovieFiles.CreateMovieFile());
 
             // Assert
             Assert.AreEqual("Name: 2001: A Space Odyssey, Length: 149", result);
@@ -28,7 +27,7 @@ namespace FilesLibTests.Visitors
             var sut = new ShowFileMetaData();
 
             // Act
-            string result = sut.Visit(CreateTextFile());
+            string result = sut.Visit(SampleTextFiles.CreateTextFile());
 
             // Assert
             Assert.AreEqual("Name: A Few Notes On The Culture.doc, Pages: 1", result);

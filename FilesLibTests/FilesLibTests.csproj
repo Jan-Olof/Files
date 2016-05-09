@@ -55,9 +55,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Unit tests\Controllers\FileControllerTests.cs" />
     <Compile Include="TestObject\SampleMovieFiles.cs" />
     <Compile Include="TestObject\SampleTextFiles.cs" />
-    <Compile Include="Visitors\ShowFileMetaDataTests.cs" />
+    <Compile Include="Unit tests\Visitors\ShowFileMetaDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
