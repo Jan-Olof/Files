@@ -2,7 +2,7 @@
 
 namespace FilesLib.Visitors
 {
-    public class ShowFileMetaData : IFileVisitor
+    public class ShowFileMetaData : IFileVisitor<string>
     {
         public string Visit(TextFile textFile)
         {

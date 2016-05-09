@@ -6,7 +6,7 @@ namespace FilesLib.Models
     {
         public decimal Length { get; set; }
 
-        public override string Accept(IFileVisitor fileVisitor)
+        public override T Accept<T>(IFileVisitor<T> fileVisitor)
         {
             return fileVisitor.Visit(this);
         }

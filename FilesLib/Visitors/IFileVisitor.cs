@@ -2,10 +2,10 @@
 
 namespace FilesLib.Visitors
 {
-    public interface IFileVisitor
+    public interface IFileVisitor<out T>
     {
-        string Visit(TextFile textFile);
+        T Visit(TextFile textFile);
 
-        string Visit(MovieFile movieFile);
+        T Visit(MovieFile movieFile);
     }
 }

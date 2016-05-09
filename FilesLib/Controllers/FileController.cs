@@ -8,9 +8,9 @@ namespace FilesLib.Controllers
 {
     public class FileController : IFileController
     {
-        private readonly IFileVisitor _showFileMetaData;
+        private readonly IFileVisitor<string> _showFileMetaData;
 
-        public FileController(IFileVisitor showFileMetaData)
+        public FileController(IFileVisitor<string> showFileMetaData)
         {
             if (showFileMetaData == null)
             {

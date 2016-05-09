@@ -7,7 +7,7 @@ namespace FilesLib.Models
     {
         public string Name { get; set; }
 
-        public virtual string Accept(IFileVisitor fileVisitor)
+        public virtual T Accept<T>(IFileVisitor<T> fileVisitor)
         {
             throw new NotImplementedException("Accept not implemented in FileBase.");
         }

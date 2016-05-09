@@ -6,7 +6,7 @@ namespace FilesLib.Models
     {
         public int Pages { get; set; }
 
-        public override string Accept(IFileVisitor fileVisitor)
+        public override T Accept<T>(IFileVisitor<T> fileVisitor)
         {
             return fileVisitor.Visit(this);
         }
