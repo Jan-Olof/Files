@@ -1,6 +1,6 @@
 ﻿using FilesLib.Models;
 
-namespace FilesLibTests.TestObject
+namespace FilesLibTests.TestObjects
 {
     public static class SampleMovieFiles
     {

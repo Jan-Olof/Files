@@ -1,8 +1,8 @@
 ﻿using FilesLib.Visitors;
-using FilesLibTests.TestObject;
+using FilesLibTests.TestObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FilesLibTests.Unit_tests.Visitors
+namespace FilesLibTests.UnitTests.Visitors
 {
     [TestClass]
     public class ShowFileMetaDataTests

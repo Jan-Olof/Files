@@ -50,6 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Visitors\IFileVisitor.cs" />
     <Compile Include="Visitors\ShowFileMetaData.cs" />
+    <Compile Include="Wrappers\FilesAndFolders.cs" />
+    <Compile Include="Wrappers\IFilesAndFolders.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

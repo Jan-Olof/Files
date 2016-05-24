@@ -1,11 +1,11 @@
 ﻿using FilesLib.Controllers;
 using FilesLib.Models;
 using FilesLib.Visitors;
-using FilesLibTests.TestObject;
+using FilesLibTests.TestObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace FilesLibTests.Unit_tests.Controllers
+namespace FilesLibTests.UnitTests.Controllers
 {
     [TestClass]
     public class FileControllerTests

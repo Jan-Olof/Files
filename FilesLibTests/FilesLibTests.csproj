@@ -55,10 +55,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Unit tests\Controllers\FileControllerTests.cs" />
-    <Compile Include="TestObject\SampleMovieFiles.cs" />
-    <Compile Include="TestObject\SampleTextFiles.cs" />
-    <Compile Include="Unit tests\Visitors\ShowFileMetaDataTests.cs" />
+    <Compile Include="IntegrationTests\WrappersTests\FilesAndFoldersTests.cs" />
+    <Compile Include="UnitTests\Controllers\FileControllerTests.cs" />
+    <Compile Include="TestObjects\SampleMovieFiles.cs" />
+    <Compile Include="TestObjects\SampleTextFiles.cs" />
+    <Compile Include="UnitTests\Visitors\ShowFileMetaDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +71,7 @@
       <Name>FilesLib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
