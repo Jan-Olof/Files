@@ -8,6 +8,16 @@ namespace FilesLibTests.IntegrationTests.WrappersTests
     public class FilesAndFoldersTests
     {
         [TestMethod]
+        public void TestShouldGetDetailedFileProperties()
+        {
+            // Act
+            FilesAndFolders.GetDetailedFileProperties(@"D:\Wallpapers\More Wallpapers");
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
         public void TestShouldGetDirectoryInfo()
         {
             // Arrange
