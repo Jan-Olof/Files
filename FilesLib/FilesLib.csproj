@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\IFileController.cs" />
+    <Compile Include="DataTransferObjects\FileDetails.cs" />
     <Compile Include="Models\FileBase.cs" />
     <Compile Include="Models\IFile.cs" />
     <Compile Include="Models\TextFile.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Visitors\ShowFileMetaData.cs" />
     <Compile Include="Wrappers\FilesAndFolders.cs" />
     <Compile Include="Wrappers\IFilesAndFolders.cs" />
+    <Compile Include="Visitors\ISwitchVisitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Shell32">
@@ -64,6 +66,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

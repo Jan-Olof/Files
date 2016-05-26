@@ -10,8 +10,11 @@ namespace FilesLibTests.IntegrationTests.WrappersTests
         [TestMethod]
         public void TestShouldGetDetailedFileProperties()
         {
+            // Arrange
+            var sut = new FilesAndFolders();
+
             // Act
-            FilesAndFolders.GetDetailedFileProperties(@"D:\Wallpapers\More Wallpapers");
+            sut.GetDetailedFileProperties(@"D:\Wallpapers\More Wallpapers");
 
             // Assert
             Assert.IsTrue(true);

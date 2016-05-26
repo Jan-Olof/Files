@@ -4,6 +4,10 @@ namespace FilesLib.Models
 {
     public class MovieFile : FileBase
     {
+        public MovieFile()
+        {
+        }
+
         public decimal Length { get; set; }
 
         public override T Accept<T>(IFileVisitor<T> fileVisitor)
