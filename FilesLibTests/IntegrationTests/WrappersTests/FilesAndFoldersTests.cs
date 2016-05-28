@@ -8,19 +8,6 @@ namespace FilesLibTests.IntegrationTests.WrappersTests
     public class FilesAndFoldersTests
     {
         [TestMethod]
-        public void TestShouldGetDetailedFileProperties()
-        {
-            // Arrange
-            var sut = new FilesAndFolders();
-
-            // Act
-            sut.GetDetailedFileProperties(@"D:\Wallpapers\More Wallpapers");
-
-            // Assert
-            Assert.IsTrue(true);
-        }
-
-        [TestMethod]
         public void TestShouldGetDirectoryInfo()
         {
             // Arrange
@@ -44,6 +31,19 @@ namespace FilesLibTests.IntegrationTests.WrappersTests
 
             // Assert
             Assert.AreEqual(123, result.ToList().Count);
+        }
+
+        [TestMethod]
+        public void TestShouldGetFilesWithProperties()
+        {
+            // Arrange
+            var sut = new FilesAndFolders();
+
+            // Act
+            var result = sut.GetFilesWithProperties(@"D:\Wallpapers\More Wallpapers");
+
+            // Assert
+            Assert.AreEqual(123, result.Count);
         }
     }
 }

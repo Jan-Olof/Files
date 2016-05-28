@@ -4,3 +4,6 @@ C:\Projects\GitHub\Files\FilesLib\obj\Debug\FilesLib.dll
 C:\Projects\GitHub\Files\FilesLib\obj\Debug\FilesLib.pdb
 C:\Projects\GitHub\Files\FilesLib\obj\Debug\Interop.Shell32.dll
 C:\Projects\GitHub\Files\FilesLib\obj\Debug\FilesLib.csproj.ResolveComReference.cache
+C:\Projects\GitHub\Files\FilesLib\obj\Debug\FilesLib.csprojResolveAssemblyReference.cache
+C:\Projects\GitHub\Files\FilesLib\bin\Debug\NLog.dll
+C:\Projects\GitHub\Files\FilesLib\bin\Debug\NLog.xml

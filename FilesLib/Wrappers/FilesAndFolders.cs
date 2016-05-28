@@ -1,49 +1,91 @@
 ﻿using FilesLib.DataTransferObjects;
 using FilesLib.Factories;
 using FilesLib.Models.FileProperties;
-using FilesLib.Visitors;
+using NLog;
 using Shell32;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 namespace FilesLib.Wrappers
 {
     public class FilesAndFolders : IFilesAndFolders
     {
-        public void GetDetailedFileProperties(string folder)
-        {
-            var shell = new Shell();
-
-            var objFolder = shell.NameSpace(folder);
-
-            var arrHeaders = GetArrHeaders(objFolder);
-
-            foreach (FolderItem2 item in objFolder.Items())
-            {
-                GetFileDetails(arrHeaders, objFolder, item);
-            }
-        }
+        /// <summary>
+        /// This is from NLog and is used for logging.
+        /// </summary>
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         public IEnumerable<DirectoryInfo> GetDirectoryInfo(string folder)
         {
-            var dir = new DirectoryInfo(folder);
+            try
+            {
+                var dir = new DirectoryInfo(folder);
 
-            return dir.EnumerateDirectories();
+                return dir.EnumerateDirectories();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                throw;
+            }
         }
 
         public IEnumerable<FileInfo> GetFileInfo(string folder)
         {
-            var dir = new DirectoryInfo(folder);
+            try
+            {
+                var dir = new DirectoryInfo(folder);
 
-            return dir.EnumerateFiles();
+                return dir.EnumerateFiles();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                throw;
+            }
         }
 
-        private static IList<string> GetArrHeaders(Folder objFolder) // TODO: What to do with this? Class that maps to one property class? (Directory?)
+        public IList<FileDto> GetFilesWithProperties(string folder)
         {
-            IList<string> arrHeaders = new List<string>();
+            IList<FileDto> fileDtos = new List<FileDto>();
 
+            try
+            {
+                var shell = new Shell(); // TODO: Create wrapper
+
+                var objFolder = shell.NameSpace(folder);
+
+                var fileProperties = GetAvailableFileProperties(objFolder);
+
+                foreach (FolderItem2 item in objFolder.Items())
+                {
+                    fileDtos.Add(new FileDto(GetFilePropertyDetails(fileProperties, objFolder, item)));
+                }
+
+                return fileDtos;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                throw;
+            }
+        }
+
+        private static void AddFileProperty(IList<IFileProperty> fileProperties, int i, string header)
+        {
+            try
+            {
+                fileProperties.Add(FilePropertyFactory.CreateFileProperty(i, header));
+            }
+            catch (NotImplementedException ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+        private static IList<IFileProperty> GetAvailableFileProperties(Folder objFolder)
+        {
             IList<IFileProperty> fileProperties = new List<IFileProperty>();
 
             for (int i = 0; i < short.MaxValue; i++)
@@ -55,41 +97,20 @@ namespace FilesLib.Wrappers
                     break;
                 }
 
-                fileProperties.Add(FilePropertyFactory.CreateFileProperty(i, header));
-
-                arrHeaders.Add(header);
+                AddFileProperty(fileProperties, i, header);
             }
 
-            return arrHeaders;
+            return fileProperties;
         }
 
-        private FileDetails GetFileDetails(IList<string> arrHeaders, Folder objFolder, FolderItem2 item)
+        private static IList<IFileProperty> GetFilePropertyDetails(IList<IFileProperty> fileProperties, Folder objFolder, FolderItem2 item)
         {
-            var fileDetails = new FileDetails();
-
-            for (int i = 0; i < arrHeaders.Count; i++)
+            foreach (var fileProperty in fileProperties)
             {
-                Debug.Print($"{i}\t{arrHeaders[i]}: {objFolder.GetDetailsOf(item, i)}");
-
-                string propertyValue = objFolder.GetDetailsOf(item, i);
-
-                switch (i)
-                {
-                    case 0:
-                        fileDetails.Name = propertyValue;
-                        break;
-
-                    case 1:
-                        fileDetails.Size = propertyValue;
-                        break;
-
-                    case 2:
-                        fileDetails.ItemType = propertyValue;
-                        break;
-                }
+                fileProperty.Value = objFolder.GetDetailsOf(item, fileProperty.Id);
             }
 
-            return fileDetails;
+            return fileProperties;
         }
     }
 }

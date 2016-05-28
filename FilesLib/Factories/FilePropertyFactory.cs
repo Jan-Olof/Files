@@ -3,7 +3,7 @@ using System;
 
 namespace FilesLib.Factories
 {
-    public class FilePropertyFactory
+    public static class FilePropertyFactory
     {
         public static IFileProperty CreateFileProperty(int propertyId, string propertyName)
         {
@@ -19,7 +19,7 @@ namespace FilesLib.Factories
                     return new ItemType(propertyId, propertyName);
 
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException($"Property name {propertyName} is not implemented in FilePropertyFactory.");
             }
         }
     }
