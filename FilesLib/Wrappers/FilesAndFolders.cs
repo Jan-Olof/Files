@@ -1,4 +1,6 @@
 ﻿using FilesLib.DataTransferObjects;
+using FilesLib.Factories;
+using FilesLib.Models.FileProperties;
 using FilesLib.Visitors;
 using Shell32;
 using System.Collections.Generic;
@@ -42,6 +44,8 @@ namespace FilesLib.Wrappers
         {
             IList<string> arrHeaders = new List<string>();
 
+            IList<IFileProperty> fileProperties = new List<IFileProperty>();
+
             for (int i = 0; i < short.MaxValue; i++)
             {
                 string header = objFolder.GetDetailsOf(null, i);
@@ -50,6 +54,8 @@ namespace FilesLib.Wrappers
                 {
                     break;
                 }
+
+                fileProperties.Add(FilePropertyFactory.CreateFileProperty(i, header));
 
                 arrHeaders.Add(header);
             }
