@@ -1,4 +1,5 @@
 ﻿using FilesLib.Models.FileProperties;
+using FilesLib.Models.FileProperties.SubClasses;
 using System;
 
 namespace FilesLib.Factories
@@ -17,6 +18,21 @@ namespace FilesLib.Factories
 
                 case "Item type":
                     return new ItemType(propertyId, propertyName);
+
+                case "Date modified":
+                    return new DateModified(propertyId, propertyName);
+
+                case "Date created":
+                    return new DateCreated(propertyId, propertyName);
+
+                case "Date accessed":
+                    return new DateAccessed(propertyId, propertyName);
+
+                case "Length":
+                    return new Length(propertyId, propertyName);
+
+                case "Dimensions":
+                    return new Dimensions(propertyId, propertyName);
 
                 default:
                     throw new NotImplementedException($"Property name {propertyName} is not implemented in FilePropertyFactory.");

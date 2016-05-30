@@ -11,3 +11,5 @@ C:\Projects\GitHub\Files\FilesLibTests\obj\Debug\FilesLibTests.dll
 C:\Projects\GitHub\Files\FilesLibTests\obj\Debug\FilesLibTests.pdb
 C:\Projects\GitHub\Files\FilesLibTests\bin\Debug\NLog.dll
 C:\Projects\GitHub\Files\FilesLibTests\bin\Debug\NLog.xml
+C:\Projects\GitHub\Files\FilesLibTests\obj\Debug\Interop.Shell32.dll
+C:\Projects\GitHub\Files\FilesLibTests\obj\Debug\FilesLibTests.csproj.ResolveComReference.cache

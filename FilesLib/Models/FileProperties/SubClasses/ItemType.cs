@@ -1,4 +1,4 @@
-﻿namespace FilesLib.Models.FileProperties
+﻿namespace FilesLib.Models.FileProperties.SubClasses
 {
     public class ItemType : FileProperty
     {

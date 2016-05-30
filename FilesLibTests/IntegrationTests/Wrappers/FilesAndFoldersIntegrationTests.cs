@@ -1,17 +1,17 @@
-﻿using FilesLib.Wrappers;
+﻿using FilesLibTests.TestObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace FilesLibTests.IntegrationTests.WrappersTests
+namespace FilesLibTests.IntegrationTests.Wrappers
 {
     [TestClass]
-    public class FilesAndFoldersTests
+    public class FilesAndFoldersIntegrationTests
     {
         [TestMethod]
         public void TestShouldGetDirectoryInfo()
         {
             // Arrange
-            var sut = new FilesAndFolders();
+            var sut = TestFactory.CreateFilesAndFolders();
 
             // Act
             var result = sut.GetDirectoryInfo(@"D:\Wallpapers");
@@ -24,7 +24,7 @@ namespace FilesLibTests.IntegrationTests.WrappersTests
         public void TestShouldGetFileInfo()
         {
             // Arrange
-            var sut = new FilesAndFolders();
+            var sut = TestFactory.CreateFilesAndFolders();
 
             // Act
             var result = sut.GetFileInfo(@"D:\Wallpapers\More Wallpapers");
@@ -37,7 +37,7 @@ namespace FilesLibTests.IntegrationTests.WrappersTests
         public void TestShouldGetFilesWithProperties()
         {
             // Arrange
-            var sut = new FilesAndFolders();
+            var sut = TestFactory.CreateFilesAndFolders();
 
             // Act
             var result = sut.GetFilesWithProperties(@"D:\Wallpapers\More Wallpapers");

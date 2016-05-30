@@ -16,13 +16,20 @@ namespace FilesLib.Wrappers
         /// </summary>
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
+        private readonly IDirectoryInfoFactory _directoryInfoFactory;
+        private readonly Shell _shell;
+
+        public FilesAndFolders(IDirectoryInfoFactory directoryInfoFactory, Shell shell)
+        {
+            _directoryInfoFactory = directoryInfoFactory;
+            _shell = shell;
+        }
+
         public IEnumerable<DirectoryInfo> GetDirectoryInfo(string folder)
         {
             try
             {
-                var dir = new DirectoryInfo(folder);
-
-                return dir.EnumerateDirectories();
+                return _directoryInfoFactory.CreateDirectoryInfo(folder).EnumerateDirectories();
             }
             catch (Exception ex)
             {
@@ -35,9 +42,7 @@ namespace FilesLib.Wrappers
         {
             try
             {
-                var dir = new DirectoryInfo(folder);
-
-                return dir.EnumerateFiles();
+                return _directoryInfoFactory.CreateDirectoryInfo(folder).EnumerateFiles();
             }
             catch (Exception ex)
             {
@@ -52,9 +57,7 @@ namespace FilesLib.Wrappers
 
             try
             {
-                var shell = new Shell(); // TODO: Create wrapper
-
-                var objFolder = shell.NameSpace(folder);
+                var objFolder = _shell.NameSpace(folder);
 
                 var fileProperties = GetAvailableFileProperties(objFolder);
 
