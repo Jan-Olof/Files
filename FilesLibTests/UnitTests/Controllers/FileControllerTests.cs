@@ -16,7 +16,7 @@ namespace FilesLibTests.UnitTests.Controllers
             // Arrange
             var fileList = CreateFileList();
 
-            var sut = new FileController(new ShowFileMetaData());
+            var sut = new FileController(new ShowFileMetaData(), TestFactory.CreateFilesAndFolders());
 
             // Act
             var result = sut.ShowFileMetaData(fileList);
@@ -26,7 +26,7 @@ namespace FilesLibTests.UnitTests.Controllers
             Assert.AreEqual("Name: 2001: A Space Odyssey, Length: 149", result[1]);
         }
 
-        private static List<FileBase> CreateFileList()
+        private static IList<FileBase> CreateFileList()
         {
             return new List<FileBase>
             {

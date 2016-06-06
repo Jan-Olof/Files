@@ -5,6 +5,7 @@ using NLog;
 using Shell32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace FilesLib.Wrappers
@@ -84,6 +85,7 @@ namespace FilesLib.Wrappers
             catch (NotImplementedException ex)
             {
                 Logger.Error(ex);
+                Debug.WriteLine(ex);
             }
         }
 

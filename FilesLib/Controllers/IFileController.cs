@@ -5,6 +5,8 @@ namespace FilesLib.Controllers
 {
     public interface IFileController
     {
+        void GetFiles();
+
         IList<string> ShowFileMetaData(IEnumerable<FileBase> files);
     }
 }

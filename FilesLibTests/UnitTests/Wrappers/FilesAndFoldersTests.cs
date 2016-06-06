@@ -1,9 +1,8 @@
 ﻿using FilesLib.Wrappers;
+using FilesLibTests.TestObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Shell32;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace FilesLibTests.UnitTests.Wrappers
@@ -37,7 +36,8 @@ namespace FilesLibTests.UnitTests.Wrappers
         public void TestShouldGetDirectoryInfo()
         {
             // Arrange
-            _directoryInfoFactory.CreateDirectoryInfo(@"D:\Wallpapers").EnumerateDirectories().Returns(new List<DirectoryInfo> { new DirectoryInfo(@"D:\Wallpapers"), new DirectoryInfo(@"D:\Wallpapers") });
+            _directoryInfoFactory.CreateDirectoryInfo(@"D:\Wallpapers").EnumerateDirectories()
+                .Returns(SampleDirectoryInfo.CreateDirectoryInfos());
 
             var sut = CreateFilesAndFolders();
 
@@ -52,7 +52,8 @@ namespace FilesLibTests.UnitTests.Wrappers
         public void TestShouldGetFileInfo()
         {
             // Arrange
-            _directoryInfoFactory.CreateDirectoryInfo(@"D:\Wallpapers\More Wallpapers").EnumerateFiles().Returns(new List<FileInfo> { new FileInfo(@"D:\Wallpapers\More Wallpapers"), new FileInfo(@"D:\Wallpapers\More Wallpapers") });
+            _directoryInfoFactory.CreateDirectoryInfo(@"D:\Wallpapers\More Wallpapers").EnumerateFiles()
+                .Returns(SampleFileInfo.CreateFileInfos());
 
             var sut = CreateFilesAndFolders();
 
@@ -61,19 +62,6 @@ namespace FilesLibTests.UnitTests.Wrappers
 
             // Assert
             Assert.AreEqual(2, result.ToList().Count);
-        }
-
-        [TestMethod]
-        public void TestShouldGetFilesWithProperties()
-        {
-            // Arrange
-            var sut = CreateFilesAndFolders();
-
-            // Act
-            var result = sut.GetFilesWithProperties(@"D:\Wallpapers\More Wallpapers");
-
-            // Assert
-            Assert.AreEqual(123, result.Count);
         }
 
         private IFilesAndFolders CreateFilesAndFolders()
