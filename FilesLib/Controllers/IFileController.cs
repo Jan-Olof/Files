@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace FilesLib.Controllers
 {
+    using FilesLib.DataTransferObjects;
+
     public interface IFileController
     {
-        void GetFiles();
+        IList<FileDto> GetFiles(string folder);
 
         IList<string> ShowFileMetaData(IEnumerable<FileBase> files);
     }

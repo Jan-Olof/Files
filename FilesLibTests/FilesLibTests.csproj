@@ -55,9 +55,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IntegrationTests\Controllers\FileControllerIntegrationTests.cs" />
     <Compile Include="IntegrationTests\Wrappers\FilesAndFoldersIntegrationTests.cs" />
     <Compile Include="TestObjects\SampleDirectoryInfo.cs" />
+    <Compile Include="TestObjects\SampleFileDto.cs" />
     <Compile Include="TestObjects\SampleFileInfo.cs" />
+    <Compile Include="TestObjects\SampleFileProperties.cs" />
     <Compile Include="TestObjects\TestFactory.cs" />
     <Compile Include="UnitTests\Controllers\FileControllerTests.cs" />
     <Compile Include="TestObjects\SampleMovieFiles.cs" />

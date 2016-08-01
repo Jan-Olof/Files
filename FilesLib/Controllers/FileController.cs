@@ -7,6 +7,8 @@ using System.Linq;
 
 namespace FilesLib.Controllers
 {
+    using FilesLib.DataTransferObjects;
+
     public class FileController : IFileController
     {
         private readonly IFilesAndFolders _filesAndFolders;
@@ -28,9 +30,9 @@ namespace FilesLib.Controllers
             _filesAndFolders = filesAndFolders;
         }
 
-        public void GetFiles()
+        public IList<FileDto> GetFiles(string folder)
         {
-            throw new NotImplementedException(); // TODO: Implement this somehow! (Use IFilesAndFolders)
+            return this._filesAndFolders.GetFilesWithProperties(folder);
         }
 
         public IList<string> ShowFileMetaData(IEnumerable<FileBase> files)
